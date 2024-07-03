@@ -25,19 +25,20 @@ popd
 
 
 
+
+
 cd %PROJECT_DIR%
 
-set CLASSPATH="%SUBPROJECT_DIR%\build\classes\java\main
-for /R .\mqtt-rpc-example-request\build\libs %%a in (*.jar) do (
+
+
+set CLASSPATH="
+for /R %SUBPROJECT_DIR%\runtime %%a in (*.jar) do (
   set CLASSPATH=!CLASSPATH!;%%a
 )
-for /R .\mqtt-rpc-example-request\runtime %%a in (*.jar) do (
-  set CLASSPATH=!CLASSPATH!;%%a
-)
-set CLASSPATH=!CLASSPATH!;%SUBPROJECT_DIR%\src\main\resources\log4j2.xml
 set CLASSPATH=!CLASSPATH!"
 
 
+set LOGGER_LEVEL=INFO
 java -classpath %CLASSPATH% com.rsmaxwell.mqtt.rpc.example.request.CalculatorRequest ^
  --username %MQTT_USERNAME% --password %MQTT_PASSWORD% ^
  --operation mul --param1 10 --param2 5

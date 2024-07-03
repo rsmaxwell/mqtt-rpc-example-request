@@ -39,6 +39,4 @@ set CLASSPATH=!CLASSPATH!"
 
 
 set LOGGER_LEVEL=INFO
-java -classpath %CLASSPATH% com.rsmaxwell.mqtt.rpc.example.request.GetPagesRequest ^
- --username %MQTT_USERNAME% --password %MQTT_PASSWORD%
-
+java -classpath %CLASSPATH% com.rsmaxwell.mqtt.rpc.example.request.BuildInfoTest
