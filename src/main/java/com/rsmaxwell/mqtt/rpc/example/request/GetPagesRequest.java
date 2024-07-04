@@ -57,7 +57,6 @@ public class GetPagesRequest {
 		connOpts.setPassword(password.getBytes());
 
 		RemoteProcedureCall rpc = new RemoteProcedureCall(client, String.format("response/%s", clientID));
-		client.setCallback(rpc.getAdapter());
 
 		// Connect
 		logger.info("Connecting to broker: %s as '%s'", server, clientID);
