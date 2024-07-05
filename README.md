@@ -4,18 +4,45 @@ This project is an example of how to user the mqtt-rcp package to perform a Remo
 
 It relies on the following dependencies:
 
-    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-common:0.0.1.5'
-    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-request:0.0.1.5'
-  
-which are available at the maven repository:
+ 
+```
+repositories {
+    maven {
+        url "https://pluto.rsmaxwell.co.uk/archiva/repository/releases"
+    }
+}
 
-    https://pluto.rsmaxwell.co.uk/archiva/repository/releases
+dependencies {
+     ...
+    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-common:0.0.1.6'
+    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-request:0.0.1.6'
+}
+```
   
-mqtt expects that a mosquitto broker is running to which clients can connect and communicate using standard topics
+  
+  
+The lastest version can be found at 
 
-This project implements a couple of requester programs which make simple requests using mqtt-rpc
+```
+https://pluto.rsmaxwell.co.uk/archiva/#artifact~releases/com.rsmaxwell.mqtt.rpc/mqtt-rpc-common
+```
+
+mqtt expects that a [Mosquitto](https://mosquitto.org/) broker is running to which clients connect and communicate using standard topics
 
 It expects that a matching responder program is also running to listen for requests and respond with a suitable reply.
 
+This project implements a couple of requester programs which make simple requests using mqtt-rpc
 
+
+
+A Handler:
+
+  * makes an mqtt client 
+  * creates an instance of [RemoteProcedureCall](https://github.com/rsmaxwell/mqtt-rpc-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/request/RemoteProcedureCall.java)
+  * connects the client to the mqtt broker
+  * subscribes to the response topic
+  * constructs a [RpcRequest ](https://github.com/rsmaxwell/mqtt-rpc-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/request/RpcRequest.java)
+  * publishes the request as a json string
+  * waits for the response
+  * handles the response
 
