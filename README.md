@@ -46,3 +46,15 @@ A Handler:
   * waits for the response
   * handles the response
 
+An example of how to make a Request is [Calculator](https://github.com/rsmaxwell/mqtt-rpc-example-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/example/request/requests/Calculator.java)
+which: 
+
+  * makes a new [request](https://github.com/rsmaxwell/mqtt-rpc-common/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/common/Request.java)
+  * sets the Request.function to a string to identify this type of request
+  * fills in the Request with appropriate key/values, in the case of a calculator these are an 'operation' string and two numbers
+  * sets the Request into the RpcRequest
+  
+An RpcRequest also handles the response
+
+  * Extracts values from the response
+  * prints the values 
