@@ -14,8 +14,8 @@ repositories {
 
 dependencies {
      ...
-    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-common:0.0.1.7'
-    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-request:0.0.1.7'
+    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-common:0.0.1.9'
+    implementation 'com.rsmaxwell.mqtt.rpc:mqtt-rpc-request:0.0.1.9'
 }
 ```
   
@@ -49,9 +49,7 @@ A Handler:
 
 A Request is an object containing a map of values and a identifier for the type of request. It is serialised into json and sent as an mqtt message to the Responder program.
 
-An RpcRequest is an abstract object which contains a Request and describing how the Requester will parse an incoming mqtt reply
-
-An example of how to make an RpcRequest is [Calculator](https://github.com/rsmaxwell/mqtt-rpc-example-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/example/request/requests/Calculator.java)
+An example of how to make an Request is [Calculator](https://github.com/rsmaxwell/mqtt-rpc-example-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/example/request/requests/Calculator.java)
 which: 
 
   * makes a new [request](https://github.com/rsmaxwell/mqtt-rpc-common/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/common/Request.java)
@@ -59,7 +57,7 @@ which:
   * fills in the Request with appropriate key/values, in the case of a calculator these are an 'operation' string and two numbers
   * sets the Request into the RpcRequest
   
-An RpcRequest also handles the response
+When the response arrives, the Calculator:
 
   * Extracts values from the response
   * prints the values 
