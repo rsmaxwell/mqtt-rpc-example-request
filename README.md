@@ -33,7 +33,7 @@ This project implements a number of example request handlers to the responder us
 
 
 
-A request handler is a program which:
+A program makes a request as follows:
 
   * makes an mqtt client 
   * creates an instance of [RemoteProcedureCall](https://github.com/rsmaxwell/mqtt-rpc-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/request/RemoteProcedureCall.java)
@@ -43,16 +43,8 @@ A request handler is a program which:
   * publishes the request as a json string
   * waits for the response and outputs the result
 
-
-A Request is an object containing a map of values and a identifier for the type of request. It is serialised into json and sent as an mqtt message to the Responder program.
-
-An example of how to make an Request is [Calculator](https://github.com/rsmaxwell/mqtt-rpc-example-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/example/request/requests/Calculator.java)
+An example of a program which makes a request is [CalculatorRequest](https://github.com/rsmaxwell/mqtt-rpc-example-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/example/request/CalculatorRequest.java)
 which: 
 
-  * makes a new [Request](https://github.com/rsmaxwell/mqtt-rpc-common/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/common/Request.java)
-  * sets the Request.function to a string to identify this type of request
-  * fills in the Request with appropriate key/values, in the case of a calculator these are an 'operation' string and two numbers
+A Request is an object containing a map of values and a identifier for the type of request. It is serialised into json and sent as an mqtt message to the Responder program.
   
-When the response arrives, the Calculator:
-
-  * prints the result from the response
