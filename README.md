@@ -39,7 +39,7 @@ A request handler is a program which:
   * creates an instance of [RemoteProcedureCall](https://github.com/rsmaxwell/mqtt-rpc-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/request/RemoteProcedureCall.java)
   * connects the client to the mqtt broker
   * subscribes to the response topic
-  * makes a [Request ](https://github.com/rsmaxwell/mqtt-rpc-request/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/common/Request.java)
+  * makes a [Request ](https://github.com/rsmaxwell/mqtt-rpc-common/blob/main/src/main/java/com/rsmaxwell/mqtt/rpc/common/Request.java)
   * publishes the request as a json string
   * waits for the response and outputs the result
 
