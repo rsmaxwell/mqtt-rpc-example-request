@@ -15,7 +15,6 @@ import org.eclipse.paho.mqttv5.client.persist.MqttDefaultFilePersistence;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rsmaxwell.mqtt.rpc.common.Request;
 import com.rsmaxwell.mqtt.rpc.common.Response;
-import com.rsmaxwell.mqtt.rpc.common.Token;
 import com.rsmaxwell.mqtt.rpc.request.RemoteProcedureCall;
 
 public class CalculatorRequest {
@@ -90,10 +89,10 @@ public class CalculatorRequest {
 
 		// Send the request as a json string
 		byte[] bytes = mapper.writeValueAsBytes(request);
-		Token token = rpc.request(requestTopic, bytes);
+		com.rsmaxwell.mqtt.rpc.request.Token token = rpc.request(requestTopic, bytes);
 
 		// Wait for the response to arrive
-		Response response = rpc.waitForResponse(token);
+		Response response = token.waitForResponse();
 
 		// Handle the response
 		if (response.ok()) {
