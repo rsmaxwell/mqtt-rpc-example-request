@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rsmaxwell.mqtt.rpc.common.Request;
 import com.rsmaxwell.mqtt.rpc.common.Response;
 import com.rsmaxwell.mqtt.rpc.request.RemoteProcedureCall;
+import com.rsmaxwell.mqtt.rpc.request.Token;
 
 public class CalculatorRequest {
 
@@ -89,7 +90,7 @@ public class CalculatorRequest {
 
 		// Send the request as a json string
 		byte[] bytes = mapper.writeValueAsBytes(request);
-		com.rsmaxwell.mqtt.rpc.request.Token token = rpc.request(requestTopic, bytes);
+		Token token = rpc.request(requestTopic, bytes);
 
 		// Wait for the response to arrive
 		Response response = token.waitForResponse();
